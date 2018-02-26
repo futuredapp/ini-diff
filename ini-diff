@@ -1,7 +1,12 @@
 #!/usr/bin/env php
 <?php
 
-require_once 'vendor/autoload.php';
+foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
+  if (file_exists($file)) {
+    require_once $file;
+    break;
+  }
+}
 
 if ($argc != 3) {
   printf('Invalid parameter count!' . PHP_EOL . PHP_EOL);
